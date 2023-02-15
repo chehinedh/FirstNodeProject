@@ -1,0 +1,26 @@
+{
+  "name": "crash-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chehinedh/FirstNodeProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chehinedh/FirstNodeProject/issues"
+  },
+  "homepage": "https://github.com/chehinedh/FirstNodeProject#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
