@@ -14,9 +14,11 @@ const db ="mongodb+srv://chehine:chehine123@cluster0.ct5uiny.mongodb.net/node?re
 mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => app.listen(3001))
   .catch((err) => console.log(err));
+
 //middleware & static files
 app.use(express.static('public'));
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true}));
 
 app.use((res, req, next) => {
   console.log('new request made:');
@@ -80,4 +82,40 @@ app.get("/blogs", (req, res) => {
 // 404 page
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
+});
+
+
+app.post('/blogs', (res,req) => {
+  const blog = new Blog(req.body);
+
+  blog.save()
+    .then((result) => {
+      res.redirect('/blogs');
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+});
+
+app.get('/blogs/:id', (req, res) => {
+  const id= req.param.id;
+  Blog.findById(id)
+    .then(result => {
+      render('details', { blog: result, title: 'Blog Details' })
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+app.delete('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+
+  Blog.findByIdAndDelete(id)
+    .then(result => {
+      res.json({ redirect: '/blogs'});
+    })
+    .catch(err => {
+      console.log(err);
+    })
 });
