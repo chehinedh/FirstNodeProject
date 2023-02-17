@@ -1,25 +1,13 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog Chehine | <%= title %> </title>
-  </head>
-  <body>
-    <h1>Home</h1>
-    <h2>Your path to becoming a Node.js ninja!</h2>
-    <nav>
-      <div class="site-title">
-        <a href="/"><h1>Blog</h1></a>
-        <p>A WebSite</p>
-      </div>
-      <ul>
-        <li><a href="/">Blogs</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blogs/create">New Blog</a></li>
-      </ul>
-    </nav>
-    <div class="not-found content">
-    OOPS, page not found
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="not-found content">
+    OOPS, page not found :)
   </div>
-  </body>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
 </html>
